@@ -8,10 +8,10 @@ app.secret_key = 'temporary_key'
 # Database connection
 def get_db_connection():
     return mysql.connector.connect(
-        host='database-2.c5eyis2co1ux.ap-south-1.rds.amazonaws.com',
+        host='clonedb.cd8yimkomvoj.us-east-1.rds.amazonaws.com',
         user='admin',
-        password='azam_1234',
-        database='course_app'
+        password='charan_123',
+        database='clone_db'
     )
 
 # Registration Route
@@ -29,8 +29,8 @@ def register():
         cursor.close()
         conn.close()
         
-        return redirect(url_for('login'))
-    return render_template('register.html')
+        return redirect(url_for('login.html'))
+    return render_template('/templates/register.html')
 
 # Login Route
 @app.route('/login', methods=['GET', 'POST'])
@@ -50,14 +50,14 @@ def login():
             return redirect(url_for('dashboard'))
         else:
             return 'Invalid credentials', 401
-    return render_template('login.html')
+    return render_template('dashboard.html')
 
 # Dashboard Route (after login)
 @app.route('/dashboard')
 def dashboard():
     course_urls = [
-        'https://aws-project-virtualclassroom.s3.ap-south-1.amazonaws.com/python_code.pdf',
-        'https://aws-project-virtualclassroom.s3.ap-south-1.amazonaws.com/PYTHON+PROGRAMMING+NOTES.pdf'
+        'https://clonebucket.s3.us-east-1.amazonaws.com/python_code.pdf',
+        'https://clonebucket.s3.us-east-1.amazonaws.com/PYTHON%2BPROGRAMMING%2BNOTES.pdf'
     ]
     
     return render_template('dashboard.html', course_urls=course_urls)
