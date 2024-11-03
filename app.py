@@ -10,7 +10,7 @@ def get_db_connection():
     return mysql.connector.connect(
         host='clonedb.cd8yimkomvoj.us-east-1.rds.amazonaws.com',
         user='admin',
-        password='charan_123',
+        password='charan_1234',
         database='clone_db'
     )
 
